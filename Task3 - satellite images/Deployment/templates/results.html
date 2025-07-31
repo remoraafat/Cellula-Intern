@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Results</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      background: #f8fafc;
+    }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+    .card img {
+      width: 240px;
+      border-radius: 10px;
+      border: 2px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Predicted Masks</h1>
+  <div class="grid">
+    {% for item in results %}
+    <div class="card">
+      <h4>Original</h4>
+      <img src="{{ url_for('static', filename='results/' + item.rgb_file) }}">
+      <h4>Mask</h4>
+      <img src="{{ url_for('static', filename='results/' + item.mask_file) }}">
+    </div>
+    {% endfor %}
+  </div>
+  <br>
+  <a href="/" style="text-decoration:none"><button class="btn">🔁 Upload More</button></a>
+</body>
+</html>
